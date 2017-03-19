@@ -25,7 +25,7 @@
 #define MYSQL_PLUGIN_AUTH_COMMON_INCLUDED
 
 /** the max allowed length for a user name */
-#define MYSQL_USERNAME_LENGTH 48
+#define MYSQL_USERNAME_LENGTH 512
 
 /**
   return values of the plugin authenticate_user() method.
@@ -68,10 +68,8 @@ typedef struct st_plugin_vio_info
 {
   enum { MYSQL_VIO_INVALID, MYSQL_VIO_TCP, MYSQL_VIO_SOCKET,
          MYSQL_VIO_PIPE, MYSQL_VIO_MEMORY } protocol;
-#ifndef _WIN32
   int socket;     /**< it's set, if the protocol is SOCKET or TCP */
-#else
-  SOCKET socket;     /**< it's set, if the protocol is SOCKET or TCP */
+#ifdef _WIN32
   HANDLE handle;  /**< it's set, if the protocol is PIPE or MEMORY */
 #endif
 } MYSQL_PLUGIN_VIO_INFO;

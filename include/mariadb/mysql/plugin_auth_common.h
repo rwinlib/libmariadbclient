@@ -1,4 +1,3 @@
-#ifndef MYSQL_PLUGIN_AUTH_COMMON_INCLUDED
 /* Copyright (C) 2010 Sergei Golubchik and Monty Program Ab
 
    This library is free software; you can redistribute it and/or
@@ -16,6 +15,7 @@
    Software Foundation, Inc., 59 Temple Place - Suite 330, Boston,
    MA 02111-1307, USA */
 
+#ifndef MYSQL_PLUGIN_AUTH_COMMON_INCLUDED
 /**
   @file
 
@@ -25,7 +25,7 @@
 #define MYSQL_PLUGIN_AUTH_COMMON_INCLUDED
 
 /** the max allowed length for a user name */
-#define MYSQL_USERNAME_LENGTH 48
+#define MYSQL_USERNAME_LENGTH  512
 
 /**
   return values of the plugin authenticate_user() method.
@@ -68,8 +68,10 @@ typedef struct st_plugin_vio_info
 {
   enum { MYSQL_VIO_INVALID, MYSQL_VIO_TCP, MYSQL_VIO_SOCKET,
          MYSQL_VIO_PIPE, MYSQL_VIO_MEMORY } protocol;
+#ifndef _WIN32
   int socket;     /**< it's set, if the protocol is SOCKET or TCP */
-#ifdef _WIN32
+#else
+  SOCKET socket;     /**< it's set, if the protocol is SOCKET or TCP */
   HANDLE handle;  /**< it's set, if the protocol is PIPE or MEMORY */
 #endif
 } MYSQL_PLUGIN_VIO_INFO;

@@ -3,6 +3,7 @@
  * Include file constants (processed in LibmysqlIncludeFiles.txt 1
  */
 /* #undef HAVE_ALLOCA_H */
+/* #undef HAVE_BIGENDIAN */
 /* #undef HAVE_ARPA_INET_H */
 /* #undef HAVE_CRYPT_H */
 #define HAVE_DIRENT_H 1
@@ -13,7 +14,7 @@
 #define HAVE_FLOAT_H 1
 /* #undef HAVE_FPU_CONTROL_H */
 /* #undef HAVE_GRP_H */
-#define HAVE_IEEEFP_H 1
+/* #undef HAVE_IEEEFP_H */
 #define HAVE_LIMITS_H 1
 #define HAVE_MALLOC_H 1
 #define HAVE_MEMORY_H 1
@@ -44,6 +45,7 @@
 /* #undef HAVE_SYSENT_H */
 /* #undef HAVE_TERMIO_H */
 /* #undef HAVE_TERMIOS_H */
+/* #undef HAVE_UCONTEXT_H */
 #define HAVE_UNISTD_H 1
 #define HAVE_UTIME_H 1
 
@@ -97,7 +99,7 @@
 /* #undef HAVE_MEMALIGN */
 #define HAVE_MEMCPY 1
 #define HAVE_MEMMOVE 1
-#define HAVE_MKSTEMP 1
+/* #undef HAVE_MKSTEMP */
 /* #undef HAVE_MLOCK */
 /* #undef HAVE_MLOCKALL */
 /* #undef HAVE_MMAP */
@@ -272,7 +274,7 @@
  * various other defines
  */
 #define HAVE_THREADS 1
-#define SHAREDIR "share"
-#define DEFAULT_CHARSET_HOME "C:/msys64-x86_64/home/Jeroen/mingw-packages/mingw-w64-libmariadbclient/pkg/mingw-w64-x86_64-libmariadbclient/mingw64"
+/* #undef SHAREDIR */
+#define DEFAULT_CHARSET_HOME "C:/Program Files (x86)/mariadb-connector-c"
 #define PLUGINDIR "/lib/plugin"
 
