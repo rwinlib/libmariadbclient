@@ -14,7 +14,7 @@
 #define HAVE_FLOAT_H 1
 /* #undef HAVE_FPU_CONTROL_H */
 /* #undef HAVE_GRP_H */
-/* #undef HAVE_IEEEFP_H */
+#define HAVE_IEEEFP_H 1
 #define HAVE_LIMITS_H 1
 #define HAVE_MALLOC_H 1
 #define HAVE_MEMORY_H 1
@@ -99,7 +99,7 @@
 /* #undef HAVE_MEMALIGN */
 #define HAVE_MEMCPY 1
 #define HAVE_MEMMOVE 1
-/* #undef HAVE_MKSTEMP */
+#define HAVE_MKSTEMP 1
 /* #undef HAVE_MLOCK */
 /* #undef HAVE_MLOCKALL */
 /* #undef HAVE_MMAP */
@@ -275,6 +275,6 @@
  */
 #define HAVE_THREADS 1
 /* #undef SHAREDIR */
-#define DEFAULT_CHARSET_HOME "C:/Program Files (x86)/mariadb-connector-c"
+#define DEFAULT_CHARSET_HOME "/mingw64"
 #define PLUGINDIR "/lib/plugin"
 
