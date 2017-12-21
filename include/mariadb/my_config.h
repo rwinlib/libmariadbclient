@@ -276,5 +276,5 @@
 #define HAVE_THREADS 1
 /* #undef SHAREDIR */
 #define DEFAULT_CHARSET_HOME "/mingw64"
-#define PLUGINDIR "/lib/plugin"
+#define PLUGINDIR "C:/msys64/mingw64/lib/plugin"
 
