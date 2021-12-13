@@ -246,7 +246,8 @@ extern const char *SQLSTATE_UNKNOWN;
     MARIADB_OPT_MULTI_STATEMENTS,
     MARIADB_OPT_INTERACTIVE,
     MARIADB_OPT_PROXY_HEADER,
-    MARIADB_OPT_IO_WAIT
+    MARIADB_OPT_IO_WAIT,
+    MARIADB_OPT_SKIP_READ_RESPONSE
   };
 
   enum mariadb_value {
@@ -426,7 +427,7 @@ typedef struct st_mysql_time
 #define SEC_PART_DIGITS 6
 #define MARIADB_INVALID_SOCKET -1
 
-/* Ansynchronous API constants */
+/* Asynchronous API constants */
 #define MYSQL_WAIT_READ      1
 #define MYSQL_WAIT_WRITE     2
 #define MYSQL_WAIT_EXCEPT    4
@@ -729,7 +730,7 @@ int STDCALL mysql_stmt_send_long_data_cont(my_bool *ret, MYSQL_STMT *stmt,
                                            int status);
 int STDCALL mysql_reset_connection(MYSQL *mysql);
 
-/* API function calls (used by dynmic plugins) */
+/* API function calls (used by dynamic plugins) */
 struct st_mariadb_api {
   unsigned long long (STDCALL *mysql_num_rows)(MYSQL_RES *res);
   unsigned int (STDCALL *mysql_num_fields)(MYSQL_RES *res);
@@ -872,6 +873,8 @@ struct st_mariadb_methods {
   void (*set_error)(MYSQL *mysql, unsigned int error_nr, const char *sqlstate, const char *format, ...);
   void (*invalidate_stmts)(MYSQL *mysql, const char *function_name);
   struct st_mariadb_api *api;
+  int (*db_read_execute_response)(MYSQL_STMT *stmt);
+  unsigned char* (*db_execute_generate_request)(MYSQL_STMT *stmt, size_t *request_len, my_bool internal);
 };
 
 /* synonyms/aliases functions */
